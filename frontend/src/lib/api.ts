@@ -92,3 +92,27 @@ export async function uploadInvoice(file: File): Promise<{ invoice_id: string; e
   if (!res.ok) throw new Error('Failed to upload invoice');
   return res.json();
 }
+
+export interface SystemInfo {
+  stack: {
+    framework: string;
+    agent_orchestration: string;
+    llm_provider: string;
+    llm_model: string;
+    embedding_model: string;
+    vector_store: string;
+    vector_store_path: string;
+    ocr: string;
+  };
+  agents: { name: string; role: string }[];
+  rag: {
+    indexed_policies: number;
+    policy_sources: string[];
+  };
+}
+
+export async function getSystemInfo(): Promise<SystemInfo> {
+  const res = await fetch(`${API_BASE}/system/info`);
+  if (!res.ok) throw new Error('Failed to fetch system info');
+  return res.json();
+}

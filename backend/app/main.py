@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import FRONTEND_PORT
-from app.routers import invoices, workflow
+from app.routers import invoices, workflow, system
 from app.services.invoice_store import seed_invoices
 
 
@@ -36,6 +36,7 @@ app.add_middleware(
 
 app.include_router(invoices.router)
 app.include_router(workflow.router)
+app.include_router(system.router)
 
 
 @app.get("/health")
