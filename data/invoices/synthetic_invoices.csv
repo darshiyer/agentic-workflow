@@ -1,0 +1,31 @@
+id,vendor_name,vendor_risk,vendor_country,invoice_number,amount,currency,invoice_date,due_date,po_number,gl_code,status,risk_flags
+INV-001,Beta Tech Services,low,US,BET-9279,170.01,USD,2026-04-19,2026-06-18,PO-13478,6500-Marketing,unprocessed,tax_id_mismatch
+INV-002,Delta Global Parts,high,IN,DEL-7224,27102.71,USD,2026-02-10,2026-02-17,PO-57052,6300-Logistics,unprocessed,high_risk_vendor;high_value;urgent_payment
+INV-003,Epsilon Cloud LLC,low,US,EPS-2307,118252.52,USD,2026-05-22,2026-05-29,PO-23238,6400-COGS,unprocessed,high_value;urgent_payment
+INV-004,Epsilon Cloud LLC,low,US,EPS-7216,17855.55,USD,2026-02-13,2026-02-20,PO-93886,6600-Professional,unprocessed,high_value;urgent_payment
+INV-005,Delta Global Parts,high,IN,DEL-4483,697.69,EUR,2026-04-13,2026-05-13,PO-61856,6600-Professional,unprocessed,high_risk_vendor
+INV-006,Theta Consulting,low,US,THE-2489,90033.52,USD,2026-04-13,2026-06-12,PO-24371,6200-IT,unprocessed,high_value
+INV-007,Gamma Logistics,medium,US,GAM-5371,79805.25,USD,2026-03-06,2026-05-05,PO-24621,6300-Logistics,unprocessed,high_value
+INV-008,Eta Engineering,high,CN,ETA-7126,1226.94,USD,2026-01-28,2026-03-29,PO-80697,6500-Marketing,unprocessed,high_risk_vendor
+INV-009,Acme Office Supplies,low,US,ACM-3705,16027.24,USD,2026-01-15,2026-01-30,PO-79163,6500-Marketing,unprocessed,high_value;urgent_payment
+INV-010,Eta Engineering,high,CN,ETA-4608,39189.55,USD,2026-04-06,2026-05-21,PO-19305,6600-Professional,unprocessed,high_risk_vendor;high_value
+INV-011,Acme Office Supplies,low,US,ACM-8744,8714.99,USD,2026-05-05,2026-06-04,PO-71993,6400-COGS,unprocessed,none
+INV-012,Delta Global Parts,high,IN,DEL-9786,225.46,EUR,2026-01-16,2026-01-23,PO-28373,6400-COGS,unprocessed,high_risk_vendor;urgent_payment
+INV-013,Gamma Logistics,medium,US,GAM-7658,372.84,EUR,2026-05-19,2026-05-26,PO-73092,6200-IT,unprocessed,urgent_payment
+INV-014,Eta Engineering,high,CN,ETA-9883,80377.41,USD,2026-04-19,2026-05-19,PO-51104,6100-Office,unprocessed,high_risk_vendor;high_value
+INV-015,Acme Office Supplies,low,US,ACM-1651,617.34,USD,2026-01-18,2026-02-02,PO-20745,6400-COGS,unprocessed,urgent_payment
+INV-016,Zeta Marketing,medium,US,ZET-2638,70514.59,USD,2026-03-18,2026-04-02,PO-80468,6200-IT,unprocessed,high_value;urgent_payment
+INV-017,Epsilon Cloud LLC,low,US,EPS-5333,14476.49,USD,2026-04-23,2026-05-08,PO-24029,6600-Professional,unprocessed,high_value;urgent_payment
+INV-018,Gamma Logistics,medium,US,GAM-5533,37834.04,USD,2026-05-06,2026-07-05,PO-10464,6300-Logistics,unprocessed,high_value
+INV-019,Gamma Logistics,medium,US,GAM-3088,90859.23,USD,2026-01-03,2026-03-04,PO-50404,6300-Logistics,unprocessed,high_value;tax_id_mismatch
+INV-020,Acme Office Supplies,low,US,ACM-7755,61681.59,USD,2026-02-09,2026-04-10,PO-33509,6600-Professional,unprocessed,high_value
+INV-021,Zeta Marketing,medium,US,ZET-8711,4617.22,USD,2026-02-10,2026-03-12,PO-36158,6400-COGS,unprocessed,none
+INV-022,Zeta Marketing,medium,US,ZET-9346,7801.37,EUR,2026-03-26,2026-05-10,PO-99065,6500-Marketing,unprocessed,none
+INV-023,Zeta Marketing,medium,US,ZET-2894,46934.42,EUR,2026-01-28,2026-02-04,PO-85574,6200-IT,unprocessed,high_value;urgent_payment
+INV-024,Epsilon Cloud LLC,low,US,EPS-7691,4819.28,USD,2026-04-21,2026-05-21,PO-62743,6600-Professional,unprocessed,tax_id_mismatch
+INV-025,Epsilon Cloud LLC,low,US,EPS-8238,2792.27,EUR,2026-05-26,2026-07-25,PO-98555,6200-IT,unprocessed,none
+INV-026,Theta Consulting,low,US,THE-4262,38494.61,USD,2026-03-27,2026-05-26,PO-13201,6100-Office,unprocessed,high_value;tax_id_mismatch
+INV-027,Delta Global Parts,high,IN,DEL-7965,6273.57,USD,2026-05-07,2026-06-21,PO-33053,6600-Professional,unprocessed,high_risk_vendor
+INV-028,Theta Consulting,low,US,THE-3607,84670.02,EUR,2026-05-24,2026-07-23,PO-68991,6300-Logistics,unprocessed,high_value
+INV-029,Delta Global Parts,high,IN,DEL-3267,3501.68,USD,2026-04-23,2026-05-23,PO-40311,6400-COGS,unprocessed,high_risk_vendor;tax_id_mismatch
+INV-030,Gamma Logistics,medium,US,GAM-8814,90269.72,USD,2026-02-22,2026-03-01,PO-56105,6300-Logistics,unprocessed,high_value;urgent_payment

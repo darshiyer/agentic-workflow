@@ -1,0 +1,917 @@
+[
+  {
+    "id": "INV-001",
+    "vendor_name": "Beta Tech Services",
+    "vendor_risk": "low",
+    "vendor_country": "US",
+    "invoice_number": "BET-9279",
+    "amount": 170.01,
+    "currency": "USD",
+    "invoice_date": "2026-04-19",
+    "due_date": "2026-06-18",
+    "po_number": "PO-13478",
+    "gl_code": "6500-Marketing",
+    "status": "unprocessed",
+    "risk_flags": [
+      "tax_id_mismatch"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 4,
+        "unit_price": 42.5,
+        "amount": 170.01
+      }
+    ]
+  },
+  {
+    "id": "INV-002",
+    "vendor_name": "Delta Global Parts",
+    "vendor_risk": "high",
+    "vendor_country": "IN",
+    "invoice_number": "DEL-7224",
+    "amount": 27102.71,
+    "currency": "USD",
+    "invoice_date": "2026-02-10",
+    "due_date": "2026-02-17",
+    "po_number": "PO-57052",
+    "gl_code": "6300-Logistics",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_risk_vendor",
+      "high_value",
+      "urgent_payment"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 4,
+        "unit_price": 1255.92,
+        "amount": 7535.51
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 2,
+        "unit_price": 9783.6,
+        "amount": 19567.2
+      }
+    ]
+  },
+  {
+    "id": "INV-003",
+    "vendor_name": "Epsilon Cloud LLC",
+    "vendor_risk": "low",
+    "vendor_country": "US",
+    "invoice_number": "EPS-2307",
+    "amount": 118252.52,
+    "currency": "USD",
+    "invoice_date": "2026-05-22",
+    "due_date": "2026-05-29",
+    "po_number": "PO-23238",
+    "gl_code": "6400-COGS",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_value",
+      "urgent_payment"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 6,
+        "unit_price": 7313.91,
+        "amount": 73139.15
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 2,
+        "unit_price": 8680.94,
+        "amount": 8680.94
+      },
+      {
+        "description": "Service or goods line 3",
+        "quantity": 4,
+        "unit_price": 7286.49,
+        "amount": 36432.43
+      }
+    ]
+  },
+  {
+    "id": "INV-004",
+    "vendor_name": "Epsilon Cloud LLC",
+    "vendor_risk": "low",
+    "vendor_country": "US",
+    "invoice_number": "EPS-7216",
+    "amount": 17855.55,
+    "currency": "USD",
+    "invoice_date": "2026-02-13",
+    "due_date": "2026-02-20",
+    "po_number": "PO-93886",
+    "gl_code": "6600-Professional",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_value",
+      "urgent_payment"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 3,
+        "unit_price": 2231.94,
+        "amount": 17855.55
+      }
+    ]
+  },
+  {
+    "id": "INV-005",
+    "vendor_name": "Delta Global Parts",
+    "vendor_risk": "high",
+    "vendor_country": "IN",
+    "invoice_number": "DEL-4483",
+    "amount": 697.69,
+    "currency": "EUR",
+    "invoice_date": "2026-04-13",
+    "due_date": "2026-05-13",
+    "po_number": "PO-61856",
+    "gl_code": "6600-Professional",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_risk_vendor"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 10,
+        "unit_price": 116.28,
+        "amount": 697.69
+      }
+    ]
+  },
+  {
+    "id": "INV-006",
+    "vendor_name": "Theta Consulting",
+    "vendor_risk": "low",
+    "vendor_country": "US",
+    "invoice_number": "THE-2489",
+    "amount": 90033.52,
+    "currency": "USD",
+    "invoice_date": "2026-04-13",
+    "due_date": "2026-06-12",
+    "po_number": "PO-24371",
+    "gl_code": "6200-IT",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_value"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 9,
+        "unit_price": 11254.19,
+        "amount": 90033.52
+      }
+    ]
+  },
+  {
+    "id": "INV-007",
+    "vendor_name": "Gamma Logistics",
+    "vendor_risk": "medium",
+    "vendor_country": "US",
+    "invoice_number": "GAM-5371",
+    "amount": 79805.25,
+    "currency": "USD",
+    "invoice_date": "2026-03-06",
+    "due_date": "2026-05-05",
+    "po_number": "PO-24621",
+    "gl_code": "6300-Logistics",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_value"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 2,
+        "unit_price": 8867.25,
+        "amount": 79805.25
+      }
+    ]
+  },
+  {
+    "id": "INV-008",
+    "vendor_name": "Eta Engineering",
+    "vendor_risk": "high",
+    "vendor_country": "CN",
+    "invoice_number": "ETA-7126",
+    "amount": 1226.94,
+    "currency": "USD",
+    "invoice_date": "2026-01-28",
+    "due_date": "2026-03-29",
+    "po_number": "PO-80697",
+    "gl_code": "6500-Marketing",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_risk_vendor"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 9,
+        "unit_price": 102.58,
+        "amount": 1025.84
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 4,
+        "unit_price": 67.03,
+        "amount": 201.1
+      }
+    ]
+  },
+  {
+    "id": "INV-009",
+    "vendor_name": "Acme Office Supplies",
+    "vendor_risk": "low",
+    "vendor_country": "US",
+    "invoice_number": "ACM-3705",
+    "amount": 16027.24,
+    "currency": "USD",
+    "invoice_date": "2026-01-15",
+    "due_date": "2026-01-30",
+    "po_number": "PO-79163",
+    "gl_code": "6500-Marketing",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_value",
+      "urgent_payment"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 2,
+        "unit_price": 1896.01,
+        "amount": 15168.05
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 9,
+        "unit_price": 231.6,
+        "amount": 694.8
+      },
+      {
+        "description": "Service or goods line 3",
+        "quantity": 3,
+        "unit_price": 20.55,
+        "amount": 164.39
+      }
+    ]
+  },
+  {
+    "id": "INV-010",
+    "vendor_name": "Eta Engineering",
+    "vendor_risk": "high",
+    "vendor_country": "CN",
+    "invoice_number": "ETA-4608",
+    "amount": 39189.55,
+    "currency": "USD",
+    "invoice_date": "2026-04-06",
+    "due_date": "2026-05-21",
+    "po_number": "PO-19305",
+    "gl_code": "6600-Professional",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_risk_vendor",
+      "high_value"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 4,
+        "unit_price": 4423.63,
+        "amount": 17694.51
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 1,
+        "unit_price": 138.5,
+        "amount": 1384.96
+      },
+      {
+        "description": "Service or goods line 3",
+        "quantity": 9,
+        "unit_price": 5027.52,
+        "amount": 20110.08
+      }
+    ]
+  },
+  {
+    "id": "INV-011",
+    "vendor_name": "Acme Office Supplies",
+    "vendor_risk": "low",
+    "vendor_country": "US",
+    "invoice_number": "ACM-8744",
+    "amount": 8714.99,
+    "currency": "USD",
+    "invoice_date": "2026-05-05",
+    "due_date": "2026-06-04",
+    "po_number": "PO-71993",
+    "gl_code": "6400-COGS",
+    "status": "unprocessed",
+    "risk_flags": [
+      "none"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 10,
+        "unit_price": 871.5,
+        "amount": 8714.99
+      }
+    ]
+  },
+  {
+    "id": "INV-012",
+    "vendor_name": "Delta Global Parts",
+    "vendor_risk": "high",
+    "vendor_country": "IN",
+    "invoice_number": "DEL-9786",
+    "amount": 225.46,
+    "currency": "EUR",
+    "invoice_date": "2026-01-16",
+    "due_date": "2026-01-23",
+    "po_number": "PO-28373",
+    "gl_code": "6400-COGS",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_risk_vendor",
+      "urgent_payment"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 2,
+        "unit_price": 43.62,
+        "amount": 174.49
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 4,
+        "unit_price": 12.74,
+        "amount": 50.97
+      }
+    ]
+  },
+  {
+    "id": "INV-013",
+    "vendor_name": "Gamma Logistics",
+    "vendor_risk": "medium",
+    "vendor_country": "US",
+    "invoice_number": "GAM-7658",
+    "amount": 372.84,
+    "currency": "EUR",
+    "invoice_date": "2026-05-19",
+    "due_date": "2026-05-26",
+    "po_number": "PO-73092",
+    "gl_code": "6200-IT",
+    "status": "unprocessed",
+    "risk_flags": [
+      "urgent_payment"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 4,
+        "unit_price": 124.28,
+        "amount": 372.84
+      }
+    ]
+  },
+  {
+    "id": "INV-014",
+    "vendor_name": "Eta Engineering",
+    "vendor_risk": "high",
+    "vendor_country": "CN",
+    "invoice_number": "ETA-9883",
+    "amount": 80377.41,
+    "currency": "USD",
+    "invoice_date": "2026-04-19",
+    "due_date": "2026-05-19",
+    "po_number": "PO-51104",
+    "gl_code": "6100-Office",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_risk_vendor",
+      "high_value"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 9,
+        "unit_price": 9999.95,
+        "amount": 79999.59
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 5,
+        "unit_price": 16.35,
+        "amount": 65.39
+      },
+      {
+        "description": "Service or goods line 3",
+        "quantity": 1,
+        "unit_price": 31.24,
+        "amount": 312.43
+      }
+    ]
+  },
+  {
+    "id": "INV-015",
+    "vendor_name": "Acme Office Supplies",
+    "vendor_risk": "low",
+    "vendor_country": "US",
+    "invoice_number": "ACM-1651",
+    "amount": 617.34,
+    "currency": "USD",
+    "invoice_date": "2026-01-18",
+    "due_date": "2026-02-02",
+    "po_number": "PO-20745",
+    "gl_code": "6400-COGS",
+    "status": "unprocessed",
+    "risk_flags": [
+      "urgent_payment"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 7,
+        "unit_price": 262.4,
+        "amount": 524.8
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 10,
+        "unit_price": 19.57,
+        "amount": 78.3
+      },
+      {
+        "description": "Service or goods line 3",
+        "quantity": 10,
+        "unit_price": 1.42,
+        "amount": 14.24
+      }
+    ]
+  },
+  {
+    "id": "INV-016",
+    "vendor_name": "Zeta Marketing",
+    "vendor_risk": "medium",
+    "vendor_country": "US",
+    "invoice_number": "ZET-2638",
+    "amount": 70514.59,
+    "currency": "USD",
+    "invoice_date": "2026-03-18",
+    "due_date": "2026-04-02",
+    "po_number": "PO-80468",
+    "gl_code": "6200-IT",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_value",
+      "urgent_payment"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 1,
+        "unit_price": 8814.32,
+        "amount": 70514.59
+      }
+    ]
+  },
+  {
+    "id": "INV-017",
+    "vendor_name": "Epsilon Cloud LLC",
+    "vendor_risk": "low",
+    "vendor_country": "US",
+    "invoice_number": "EPS-5333",
+    "amount": 14476.49,
+    "currency": "USD",
+    "invoice_date": "2026-04-23",
+    "due_date": "2026-05-08",
+    "po_number": "PO-24029",
+    "gl_code": "6600-Professional",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_value",
+      "urgent_payment"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 9,
+        "unit_price": 4383.34,
+        "amount": 4383.34
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 9,
+        "unit_price": 1347.5,
+        "amount": 6737.49
+      },
+      {
+        "description": "Service or goods line 3",
+        "quantity": 2,
+        "unit_price": 1118.55,
+        "amount": 3355.66
+      }
+    ]
+  },
+  {
+    "id": "INV-018",
+    "vendor_name": "Gamma Logistics",
+    "vendor_risk": "medium",
+    "vendor_country": "US",
+    "invoice_number": "GAM-5533",
+    "amount": 37834.04,
+    "currency": "USD",
+    "invoice_date": "2026-05-06",
+    "due_date": "2026-07-05",
+    "po_number": "PO-10464",
+    "gl_code": "6300-Logistics",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_value"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 2,
+        "unit_price": 5404.86,
+        "amount": 37834.04
+      }
+    ]
+  },
+  {
+    "id": "INV-019",
+    "vendor_name": "Gamma Logistics",
+    "vendor_risk": "medium",
+    "vendor_country": "US",
+    "invoice_number": "GAM-3088",
+    "amount": 90859.23,
+    "currency": "USD",
+    "invoice_date": "2026-01-03",
+    "due_date": "2026-03-04",
+    "po_number": "PO-50404",
+    "gl_code": "6300-Logistics",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_value",
+      "tax_id_mismatch"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 9,
+        "unit_price": 82122.18,
+        "amount": 82122.18
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 10,
+        "unit_price": 809.47,
+        "amount": 7285.21
+      },
+      {
+        "description": "Service or goods line 3",
+        "quantity": 3,
+        "unit_price": 207.41,
+        "amount": 1451.84
+      }
+    ]
+  },
+  {
+    "id": "INV-020",
+    "vendor_name": "Acme Office Supplies",
+    "vendor_risk": "low",
+    "vendor_country": "US",
+    "invoice_number": "ACM-7755",
+    "amount": 61681.59,
+    "currency": "USD",
+    "invoice_date": "2026-02-09",
+    "due_date": "2026-04-10",
+    "po_number": "PO-33509",
+    "gl_code": "6600-Professional",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_value"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 3,
+        "unit_price": 20560.53,
+        "amount": 61681.59
+      }
+    ]
+  },
+  {
+    "id": "INV-021",
+    "vendor_name": "Zeta Marketing",
+    "vendor_risk": "medium",
+    "vendor_country": "US",
+    "invoice_number": "ZET-8711",
+    "amount": 4617.22,
+    "currency": "USD",
+    "invoice_date": "2026-02-10",
+    "due_date": "2026-03-12",
+    "po_number": "PO-36158",
+    "gl_code": "6400-COGS",
+    "status": "unprocessed",
+    "risk_flags": [
+      "none"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 7,
+        "unit_price": 4617.22,
+        "amount": 4617.22
+      }
+    ]
+  },
+  {
+    "id": "INV-022",
+    "vendor_name": "Zeta Marketing",
+    "vendor_risk": "medium",
+    "vendor_country": "US",
+    "invoice_number": "ZET-9346",
+    "amount": 7801.37,
+    "currency": "EUR",
+    "invoice_date": "2026-03-26",
+    "due_date": "2026-05-10",
+    "po_number": "PO-99065",
+    "gl_code": "6500-Marketing",
+    "status": "unprocessed",
+    "risk_flags": [
+      "none"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 5,
+        "unit_price": 1300.23,
+        "amount": 7801.37
+      }
+    ]
+  },
+  {
+    "id": "INV-023",
+    "vendor_name": "Zeta Marketing",
+    "vendor_risk": "medium",
+    "vendor_country": "US",
+    "invoice_number": "ZET-2894",
+    "amount": 46934.42,
+    "currency": "EUR",
+    "invoice_date": "2026-01-28",
+    "due_date": "2026-02-04",
+    "po_number": "PO-85574",
+    "gl_code": "6200-IT",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_value",
+      "urgent_payment"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 6,
+        "unit_price": 4884.18,
+        "amount": 34189.27
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 10,
+        "unit_price": 1416.13,
+        "amount": 12745.15
+      }
+    ]
+  },
+  {
+    "id": "INV-024",
+    "vendor_name": "Epsilon Cloud LLC",
+    "vendor_risk": "low",
+    "vendor_country": "US",
+    "invoice_number": "EPS-7691",
+    "amount": 4819.28,
+    "currency": "USD",
+    "invoice_date": "2026-04-21",
+    "due_date": "2026-05-21",
+    "po_number": "PO-62743",
+    "gl_code": "6600-Professional",
+    "status": "unprocessed",
+    "risk_flags": [
+      "tax_id_mismatch"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 10,
+        "unit_price": 738.17,
+        "amount": 4429.04
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 2,
+        "unit_price": 51.12,
+        "amount": 255.61
+      },
+      {
+        "description": "Service or goods line 3",
+        "quantity": 9,
+        "unit_price": 26.93,
+        "amount": 134.63
+      }
+    ]
+  },
+  {
+    "id": "INV-025",
+    "vendor_name": "Epsilon Cloud LLC",
+    "vendor_risk": "low",
+    "vendor_country": "US",
+    "invoice_number": "EPS-8238",
+    "amount": 2792.27,
+    "currency": "EUR",
+    "invoice_date": "2026-05-26",
+    "due_date": "2026-07-25",
+    "po_number": "PO-98555",
+    "gl_code": "6200-IT",
+    "status": "unprocessed",
+    "risk_flags": [
+      "none"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 5,
+        "unit_price": 464.26,
+        "amount": 2321.31
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 10,
+        "unit_price": 10.48,
+        "amount": 104.78
+      },
+      {
+        "description": "Service or goods line 3",
+        "quantity": 6,
+        "unit_price": 45.77,
+        "amount": 366.18
+      }
+    ]
+  },
+  {
+    "id": "INV-026",
+    "vendor_name": "Theta Consulting",
+    "vendor_risk": "low",
+    "vendor_country": "US",
+    "invoice_number": "THE-4262",
+    "amount": 38494.61,
+    "currency": "USD",
+    "invoice_date": "2026-03-27",
+    "due_date": "2026-05-26",
+    "po_number": "PO-13201",
+    "gl_code": "6100-Office",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_value",
+      "tax_id_mismatch"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 5,
+        "unit_price": 9623.65,
+        "amount": 38494.61
+      }
+    ]
+  },
+  {
+    "id": "INV-027",
+    "vendor_name": "Delta Global Parts",
+    "vendor_risk": "high",
+    "vendor_country": "IN",
+    "invoice_number": "DEL-7965",
+    "amount": 6273.57,
+    "currency": "USD",
+    "invoice_date": "2026-05-07",
+    "due_date": "2026-06-21",
+    "po_number": "PO-33053",
+    "gl_code": "6600-Professional",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_risk_vendor"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 1,
+        "unit_price": 3136.78,
+        "amount": 6273.57
+      }
+    ]
+  },
+  {
+    "id": "INV-028",
+    "vendor_name": "Theta Consulting",
+    "vendor_risk": "low",
+    "vendor_country": "US",
+    "invoice_number": "THE-3607",
+    "amount": 84670.02,
+    "currency": "EUR",
+    "invoice_date": "2026-05-24",
+    "due_date": "2026-07-23",
+    "po_number": "PO-68991",
+    "gl_code": "6300-Logistics",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_value"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 9,
+        "unit_price": 7410.15,
+        "amount": 51871.03
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 9,
+        "unit_price": 4099.87,
+        "amount": 32798.99
+      }
+    ]
+  },
+  {
+    "id": "INV-029",
+    "vendor_name": "Delta Global Parts",
+    "vendor_risk": "high",
+    "vendor_country": "IN",
+    "invoice_number": "DEL-3267",
+    "amount": 3501.68,
+    "currency": "USD",
+    "invoice_date": "2026-04-23",
+    "due_date": "2026-05-23",
+    "po_number": "PO-40311",
+    "gl_code": "6400-COGS",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_risk_vendor",
+      "tax_id_mismatch"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 6,
+        "unit_price": 137.74,
+        "amount": 826.43
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 9,
+        "unit_price": 1337.62,
+        "amount": 2675.25
+      }
+    ]
+  },
+  {
+    "id": "INV-030",
+    "vendor_name": "Gamma Logistics",
+    "vendor_risk": "medium",
+    "vendor_country": "US",
+    "invoice_number": "GAM-8814",
+    "amount": 90269.72,
+    "currency": "USD",
+    "invoice_date": "2026-02-22",
+    "due_date": "2026-03-01",
+    "po_number": "PO-56105",
+    "gl_code": "6300-Logistics",
+    "status": "unprocessed",
+    "risk_flags": [
+      "high_value",
+      "urgent_payment"
+    ],
+    "line_items": [
+      {
+        "description": "Service or goods line 1",
+        "quantity": 10,
+        "unit_price": 81671.42,
+        "amount": 81671.42
+      },
+      {
+        "description": "Service or goods line 2",
+        "quantity": 10,
+        "unit_price": 1228.33,
+        "amount": 8598.3
+      }
+    ]
+  }
+]
