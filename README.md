@@ -17,30 +17,47 @@ A portfolio-ready, end-to-end prototype inspired by **Peakflo**'s agentic financ
 ## Architecture
 
 ```
-Next.js UI  ──HTTP──►  FastAPI Backend
-                            │
-        ┌───────────────────┼───────────────────┐
-        ▼                   ▼                   ▼
-   Invoice Store     Workflow Orchestrator   ChromaDB RAG
-        │                   │
-        ▼                   ▼
-  Data Extraction      Policy Check
-  (JSON / OCR)         (retrieve + LLM)
-                              │
-                              ▼
-                        Approval Agent
-                              │
-                              ▼
-                        Notification Agent
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              Next.js Frontend                                │
+│  Invoice selector / upload  →  "Run Workflow"  →  Step-by-step trace viewer  │
+└──────────────────────────────┬──────────────────────────────────────────────┘
+                               │ HTTP / JSON
+┌──────────────────────────────▼──────────────────────────────────────────────┐
+│                          FastAPI Backend (Python)                            │
+│  • /invoices/ingest      • /workflow/run      • /workflow/status/{run_id}   │
+│  • /invoices/{id}        • /policies/search   • /workflow/trace/{run_id}    │
+└──────────────────────────────┬──────────────────────────────────────────────┘
+                               │
+        ┌──────────────────────┼──────────────────────┐
+        │                      │                      │
+┌───────▼──────┐    ┌──────────▼──────────┐   ┌───────▼───────┐
+│  In-Memory   │    │   Workflow          │   │  ChromaDB     │
+│  Invoice     │    │   Orchestrator      │   │  Vector Store │
+│  Store       │    │   (sequential)      │   │  (RAG)        │
+└──────────────┘    └──────────┬──────────┘   └───────────────┘
+                               │
+          ┌────────────────────┼────────────────────┐
+          │                    │                    │
+┌─────────▼─────────┐ ┌────────▼─────────┐ ┌────────▼──────────┐
+│ Data Extraction   │ │ Policy Check     │ │ Approval          │
+│ Agent             │ │ Agent (RAG)      │ │ Recommendation    │
+│ - JSON parser     │ │ - Chroma retrieve│ │ Agent             │
+│ - OCR (Tesseract) │ │ - LLM grounded   │ │ - decision + why  │
+└───────────────────┘ └──────────────────┘ └───────────────────┘
+                                                    │
+                                           ┌────────▼──────────┐
+                                           │ Notification Agent│
+                                           │ (simulated email) │
+                                           └───────────────────┘
 ```
 
 ## Tech stack
 
-- **Backend**: Python, FastAPI, Pydantic v2, Uvicorn
+- **Backend**: Python 3.11+, FastAPI, Pydantic v2, Uvicorn
 - **Agents / RAG**: LangChain, ChromaDB, `sentence-transformers/all-MiniLM-L6-v2`
 - **LLM provider**: OpenAI GPT-4o-mini (optional), Ollama (optional), or deterministic rule-based fallback (default)
 - **OCR**: Tesseract + `pdf2image`
-- **Frontend**: Next.js 14, React, Tailwind CSS
+- **Frontend**: Next.js 15, React, Tailwind CSS
 - **Packaging**: Docker Compose
 
 ## How this maps to Peakflo-style finance workflows
@@ -54,7 +71,7 @@ Next.js UI  ──HTTP──►  FastAPI Backend
 | Workflow Orchestrator | End-to-end procure-to-pay visibility and audit trail |
 | RAG Layer | Grounding decisions in dynamic ERP/finance policy knowledge |
 
-## Quick start
+## Quick start (Docker Compose)
 
 ```bash
 # 1. Clone / enter the repo
@@ -70,6 +87,8 @@ docker-compose up --build
 # 4. Open the UI at http://localhost:3000
 # 5. Backend docs at http://localhost:8000/docs
 ```
+
+> **Note for macOS users**: the OCR path uses `pdf2image`, which requires Poppler. If you run the backend outside Docker, install it with `brew install poppler tesseract`.
 
 ## Local development (without Docker)
 
@@ -100,30 +119,49 @@ curl -X POST http://localhost:8000/invoices/ingest
 # List invoices
 curl http://localhost:8000/invoices
 
-# Run workflow on invoice INV-001
+# Run workflow on invoice INV-002 (high-risk, high-value)
 curl -X POST http://localhost:8000/workflow/run \
   -H "Content-Type: application/json" \
-  -d '{"invoice_id": "INV-001"}'
+  -d '{"invoice_id": "INV-002"}'
 
 # Get full trace
 curl http://localhost:8000/workflow/trace/<run_id>
+
+# Upload a PDF invoice for OCR + workflow
+curl -X POST http://localhost:8000/invoices/upload \
+  -F "file=@data/sample_pdfs/sample_invoice_high.pdf"
+```
+
+## Project structure
+
+```
+peakflo-agentic-workflow/
+├── README.md
+├── docker-compose.yml
+├── backend/              # FastAPI app, agents, RAG, tests
+├── frontend/             # Next.js dashboard
+└── data/                 # Synthetic invoices, policy KB, sample PDFs
 ```
 
 ## Demo script
 
 1. Open the UI at `http://localhost:3000`.
-2. Select a synthetic invoice (e.g., a high-dollar vendor bill).
+2. Select a synthetic invoice (e.g., **INV-002** — high-risk vendor, $27k).
 3. Click **Run Agentic Workflow**.
 4. Narrate each step in the trace:
    - Extraction: "Here the agent pulls vendor, amount, due date, PO, GL code."
    - Policy check: "RAG retrieves the approval threshold and vendor risk policy."
-   - Recommendation: "Because the amount is over $10k and the vendor has a risk flag, the system escalates."
+   - Recommendation: "Because the amount is over $10k and the vendor is high-risk, the system escalates."
    - Notification: "A simulated email is queued to the CFO."
 5. Upload a sample PDF invoice and show OCR → extraction → workflow.
 
-## Project structure
+## Running tests
 
-See the architecture diagram and the `backend/`, `frontend/`, and `data/` directories.
+```bash
+cd backend
+source venv/bin/activate
+pytest tests -v
+```
 
 ## License
 
