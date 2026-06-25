@@ -1,80 +1,195 @@
 "use client";
 
-import { useMemo } from 'react';
+import { useMemo, useState, useCallback } from 'react';
 import {
   ReactFlow,
   Background,
   Controls,
-  MiniMap,
   Node,
   Edge,
+  Handle,
+  Position,
+  useNodesState,
+  useEdgesState,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
+import { WorkflowRun, AgentStep } from '@/lib/api';
+import { FileSearch, ShieldCheck, Gavel, Mail, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 
 interface Props {
-  activeAgent?: string;
+  run: WorkflowRun | null;
+  onNodeClick?: (step: AgentStep | null) => void;
 }
 
-const agentNodes = [
-  { id: 'extract', label: 'Data Extraction', description: 'OCR + field parsing' },
-  { id: 'policy', label: 'Policy Check', description: 'RAG-grounded compliance' },
-  { id: 'approval', label: 'Approval Rec.', description: 'Approve / Hold / Escalate' },
-  { id: 'notify', label: 'Notification', description: 'Simulated alert' },
+const AGENTS = [
+  {
+    id: 'extract',
+    label: 'Data Extraction',
+    subtitle: 'OCR + field parsing',
+    icon: FileSearch,
+  },
+  {
+    id: 'policy',
+    label: 'Policy Check',
+    subtitle: 'RAG-grounded compliance',
+    icon: ShieldCheck,
+  },
+  {
+    id: 'approval',
+    label: 'Approval Recommendation',
+    subtitle: 'Approve / Hold / Escalate',
+    icon: Gavel,
+  },
+  {
+    id: 'notify',
+    label: 'Notification',
+    subtitle: 'Simulated alert',
+    icon: Mail,
+  },
 ];
 
-export default function AgentFlowchart({ activeAgent }: Props) {
-  const nodes: Node[] = useMemo(
-    () =>
-      agentNodes.map((agent, idx) => ({
-        id: agent.id,
-        position: { x: idx * 260, y: 80 },
-        data: {
-          label: (
-            <div className="text-center">
-              <div className="font-semibold text-slate-100">{agent.label}</div>
-              <div className="text-xs text-slate-400">{agent.description}</div>
-            </div>
-          ),
-        },
-        style: {
-          background: activeAgent === agent.label || activeAgent?.includes(agent.label.replace(' Rec.', 'Recommendation'))
-            ? 'linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%)'
-            : '#1e293b',
-          color: '#fff',
-          border: '1px solid rgba(148,163,184,0.2)',
-          borderRadius: '16px',
-          padding: '12px',
-          width: 200,
-          boxShadow: activeAgent?.includes(agent.label.replace(' Rec.', 'Recommendation'))
-            ? '0 0 20px rgba(14,165,233,0.4)'
-            : 'none',
-        },
-      })),
-    [activeAgent]
-  );
+function nodeState(run: WorkflowRun | null, agentId: string): 'idle' | 'running' | 'success' | 'error' {
+  if (!run) return 'idle';
+  const step = run.steps.find((s) => agentNameToId(s.agent) === agentId);
+  if (!step) {
+    // If a previous step exists but not this one, it's waiting
+    const prevIdx = AGENTS.findIndex((a) => a.id === agentId) - 1;
+    if (prevIdx >= 0 && run.steps.some((s) => agentNameToId(s.agent) === AGENTS[prevIdx].id)) {
+      return run.status === 'running' ? 'running' : 'idle';
+    }
+    return 'idle';
+  }
+  if (step.status === 'error') return 'error';
+  return 'success';
+}
 
-  const edges: Edge[] = useMemo(
-    () =>
-      agentNodes.slice(0, -1).map((agent, idx) => ({
-        id: `e${agent.id}-${agentNodes[idx + 1].id}`,
-        source: agent.id,
-        target: agentNodes[idx + 1].id,
-        animated: true,
-        style: { stroke: '#38bdf8', strokeWidth: 2 },
-      })),
-    []
+function agentNameToId(name: string): string {
+  if (name.includes('Extraction')) return 'extract';
+  if (name.includes('Policy')) return 'policy';
+  if (name.includes('Approval')) return 'approval';
+  if (name.includes('Notification')) return 'notify';
+  return '';
+}
+
+function CustomNode({ data }: { data: any }) {
+  const { label, subtitle, icon: Icon, state, active } = data;
+
+  const stateStyles = {
+    idle: 'border-slate-700 bg-slate-900/60 text-slate-400',
+    running: 'border-sky-500 bg-sky-950/60 text-sky-300 shadow-[0_0_30px_rgba(14,165,233,0.35)]',
+    success: 'border-emerald-500/60 bg-emerald-950/40 text-emerald-300',
+    error: 'border-rose-500 bg-rose-950/60 text-rose-300',
+  };
+
+  const StatusIcon = state === 'running' ? Loader2 : state === 'success' ? CheckCircle2 : state === 'error' ? AlertCircle : null;
+
+  return (
+    <div
+      className={`relative w-56 rounded-2xl border-2 p-4 transition-all duration-500 ${stateStyles[state as keyof typeof stateStyles]} ${
+        active ? 'scale-105' : ''
+      }`}
+    >
+      <Handle type="target" position={Position.Left} className="!bg-sky-500 !w-3 !h-3" />
+      <div className="flex items-start gap-3">
+        <div
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
+            state === 'running'
+              ? 'bg-sky-500/20'
+              : state === 'success'
+              ? 'bg-emerald-500/20'
+              : state === 'error'
+              ? 'bg-rose-500/20'
+              : 'bg-slate-800'
+          }`}
+        >
+          <Icon className="h-5 w-5" />
+        </div>
+        <div className="min-w-0 flex-1">
+          <h4 className="font-semibold leading-tight text-white">{label}</h4>
+          <p className="mt-0.5 text-xs opacity-80">{subtitle}</p>
+        </div>
+        {StatusIcon && (
+          <StatusIcon
+            className={`h-5 w-5 shrink-0 ${state === 'running' ? 'animate-spin' : ''}`}
+          />
+        )}
+      </div>
+      <Handle type="source" position={Position.Right} className="!bg-sky-500 !w-3 !h-3" />
+    </div>
+  );
+}
+
+const nodeTypes = { custom: CustomNode };
+
+export default function AgentFlowchart({ run, onNodeClick }: Props) {
+  const [selectedNode, setSelectedNode] = useState<string | null>(null);
+
+  const { initialNodes, initialEdges } = useMemo(() => {
+    const nodes: Node[] = AGENTS.map((agent, idx) => ({
+      id: agent.id,
+      type: 'custom',
+      position: { x: idx * 320, y: 0 },
+      data: {
+        label: agent.label,
+        subtitle: agent.subtitle,
+        icon: agent.icon,
+        state: nodeState(run, agent.id),
+        active: run?.status === 'running' && nodeState(run, agent.id) === 'running',
+      },
+    }));
+
+    const edges: Edge[] = AGENTS.slice(0, -1).map((agent, idx) => ({
+      id: `e-${agent.id}-${AGENTS[idx + 1].id}`,
+      source: agent.id,
+      target: AGENTS[idx + 1].id,
+      animated: nodeState(run, AGENTS[idx + 1].id) === 'running' || nodeState(run, agent.id) === 'success',
+      style: {
+        stroke: nodeState(run, agent.id) === 'success' ? '#10b981' : '#38bdf8',
+        strokeWidth: 3,
+      },
+    }));
+
+    return { initialNodes: nodes, initialEdges: edges };
+  }, [run]);
+
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  // Sync when run changes
+  useMemo(() => {
+    setNodes(initialNodes);
+    setEdges(initialEdges);
+  }, [initialNodes, initialEdges, setNodes, setEdges]);
+
+  const handleNodeClick = useCallback(
+    (_: any, node: Node) => {
+      setSelectedNode(node.id);
+      if (!run) {
+        onNodeClick?.(null);
+        return;
+      }
+      const step = run.steps.find((s) => agentNameToId(s.agent) === node.id);
+      onNodeClick?.(step || null);
+    },
+    [run, onNodeClick]
   );
 
   return (
-    <div className="glass rounded-2xl p-4">
-      <h3 className="mb-2 text-lg font-semibold text-white">Agent Orchestration Flow</h3>
-      <div className="h-80 w-full rounded-xl bg-slate-900/50">
-        <ReactFlow nodes={nodes} edges={edges} fitView attributionPosition="bottom-left">
-          <Background color="#475569" gap={20} />
-          <Controls />
-          <MiniMap nodeStrokeWidth={3} className="!bg-slate-800" />
-        </ReactFlow>
-      </div>
+    <div className="h-[420px] w-full rounded-2xl border border-slate-700/50 bg-slate-950/60">
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onNodeClick={handleNodeClick}
+        nodeTypes={nodeTypes}
+        fitView
+        attributionPosition="bottom-left"
+        proOptions={{ hideAttribution: true }}
+      >
+        <Background color="#334155" gap={24} />
+        <Controls />
+      </ReactFlow>
     </div>
   );
 }
