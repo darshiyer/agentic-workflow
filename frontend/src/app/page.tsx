@@ -17,7 +17,6 @@ import {
   Upload,
   Play,
   Loader2,
-  FileText,
   Cpu,
   Database,
   BrainCircuit,
@@ -140,8 +139,6 @@ export default function Home() {
     }
   };
 
-  const selectedInvoice = invoices.find((inv) => inv.id === selectedId);
-
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-4 text-slate-100 md:p-8">
       <div className="mx-auto max-w-7xl space-y-8">
@@ -184,67 +181,12 @@ export default function Home() {
           </section>
         )}
 
-        {/* Why this improves Peakflo */}
-        <section className="glass rounded-2xl p-6 md:p-8">
-          <h2 className="mb-6 flex items-center gap-2 text-xl font-bold text-white">
-            <Sparkles className="h-5 w-5 text-sky-400" /> How this improves Peakflo-style AP automation
-          </h2>
-          <div className="grid gap-4 md:grid-cols-2">
-            {DIFFERENTIATORS.map((item) => (
-              <div
-                key={item.peakflo}
-                className="rounded-xl border border-slate-700/50 bg-slate-900/40 p-5 transition hover:border-sky-500/30"
-              >
-                <div className="mb-3 flex items-center gap-2">
-                  <item.icon className="h-5 w-5 text-sky-400" />
-                  <h3 className="font-semibold text-slate-200">{item.ours.split('：')[0]}</h3>
-                </div>
-                <div className="space-y-2 text-sm">
-                  <p className="text-slate-500">
-                    <span className="font-medium text-slate-400">Typical approach:</span> {item.peakflo}
-                  </p>
-                  <div className="flex items-start gap-2">
-                    <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
-                    <p className="text-emerald-100/90">{item.ours}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Agent Architecture */}
-        <section className="grid gap-6 lg:grid-cols-3">
-          <div className="lg:col-span-2">
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-xl font-bold text-white">Agent Orchestration Graph</h2>
-              {run && <StatusBadge text={run.status} type={run.status === 'completed' ? 'success' : 'warning'} />}
-            </div>
-            <AgentFlowchart run={run} onNodeClick={(step) => setSelectedStep(step)} />
-            <p className="mt-3 text-center text-xs text-slate-500">
-              Click a node to inspect its output. Each agent emits a structured step in the workflow trace.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            <h2 className="text-xl font-bold text-white">Agent Stack</h2>
-            {systemInfo?.agents.map((agent, idx) => (
-              <div key={agent.name} className="flex gap-3 rounded-xl border border-slate-700/50 bg-slate-900/40 p-4">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-800 text-xs font-bold text-sky-400">
-                  {idx + 1}
-                </div>
-                <div>
-                  <p className="font-semibold text-slate-200">{agent.name}</p>
-                  <p className="text-xs text-slate-500">{agent.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Controls */}
+        {/* Run Workflow */}
         <section className="glass rounded-2xl p-6">
-          <h2 className="mb-4 text-xl font-bold text-white">Run Workflow</h2>
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="text-xl font-bold text-white">Run Workflow</h2>
+            {run && <StatusBadge text={run.status} type={run.status === 'completed' ? 'success' : 'warning'} />}
+          </div>
           <div className="grid gap-4 md:grid-cols-4">
             <div className="md:col-span-2">
               <label className="mb-2 block text-sm font-medium text-slate-400">Select invoice</label>
@@ -287,6 +229,32 @@ export default function Home() {
               {error}
             </div>
           )}
+        </section>
+
+        {/* Agent Architecture */}
+        <section className="grid gap-6 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <h2 className="mb-3 text-xl font-bold text-white">Agent Orchestration Graph</h2>
+            <AgentFlowchart run={run} onNodeClick={(step) => setSelectedStep(step)} />
+            <p className="mt-3 text-center text-xs text-slate-500">
+              Click a node to inspect its output. Each agent emits a structured step in the workflow trace.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <h2 className="text-xl font-bold text-white">Agent Stack</h2>
+            {systemInfo?.agents.map((agent, idx) => (
+              <div key={agent.name} className="flex gap-3 rounded-xl border border-slate-700/50 bg-slate-900/40 p-4">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-800 text-xs font-bold text-sky-400">
+                  {idx + 1}
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-200">{agent.name}</p>
+                  <p className="text-xs text-slate-500">{agent.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* Results */}
@@ -359,6 +327,35 @@ export default function Home() {
             </CodePanel>
           </section>
         )}
+
+        {/* Why this improves Peakflo */}
+        <section className="glass rounded-2xl p-6 md:p-8">
+          <h2 className="mb-6 flex items-center gap-2 text-xl font-bold text-white">
+            <Sparkles className="h-5 w-5 text-sky-400" /> How this improves Peakflo-style AP automation
+          </h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            {DIFFERENTIATORS.map((item) => (
+              <div
+                key={item.peakflo}
+                className="rounded-xl border border-slate-700/50 bg-slate-900/40 p-5 transition hover:border-sky-500/30"
+              >
+                <div className="mb-3 flex items-center gap-2">
+                  <item.icon className="h-5 w-5 text-sky-400" />
+                  <h3 className="font-semibold text-slate-200">{item.ours.split('：')[0]}</h3>
+                </div>
+                <div className="space-y-2 text-sm">
+                  <p className="text-slate-500">
+                    <span className="font-medium text-slate-400">Typical approach:</span> {item.peakflo}
+                  </p>
+                  <div className="flex items-start gap-2">
+                    <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
+                    <p className="text-emerald-100/90">{item.ours}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </main>
   );
