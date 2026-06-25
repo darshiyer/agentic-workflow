@@ -1,7 +1,7 @@
 """Build and persist the ChromaDB index over finance policies."""
 from pathlib import Path
 
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 
 from app.config import CHROMA_DIR, EMBEDDING_MODEL, REBUILD_INDEX
